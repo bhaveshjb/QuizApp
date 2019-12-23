@@ -13,7 +13,7 @@ QuizApp iOS/Android App
 ### if cocoa pods is already installed
 *  run `cd ios && pod install`
 
-### Android
+# Android instructions
 
 * go to `QuizApp/android`
 * create `local.properties` file. 

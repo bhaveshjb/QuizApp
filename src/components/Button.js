@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
-
+import HTML from 'react-native-render-html';
 export const Styles = StyleSheet.create({
   button: {
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
@@ -26,7 +26,8 @@ export const Styles = StyleSheet.create({
 
 export const Button = ({text, onPress = () => {}}) => (
   <TouchableOpacity onPress={onPress} style={Styles.button}>
-    <Text style={Styles.text}>{text}</Text>
+    {/* <Text style={Styles.text}>{text}</Text> */}
+    <HTML baseFontStyle={{fontSize : 18,color:'#FFFFFF'}} html={text}  />
   </TouchableOpacity>
 );
 

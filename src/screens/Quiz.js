@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{} from 'react';
 import { View, StyleSheet, StatusBar, Text, SafeAreaView } from 'react-native';
 
 import { Button, ButtonContainer } from '../components/Button';
@@ -6,6 +6,7 @@ import { Alert } from '../components/Alert';
 import _ from 'lodash';
 import { removeKey, setKey, getKey } from '../utilities/storage';
 import { CURRENT_QUIZ, CURRENT_TEST_ID, CURRENT_QUESTION } from '../utilities/constant';
+import HTML from 'react-native-render-html';
 import Modal from '../components/Modal';
 let StartTime;
 let EndTime;
@@ -181,6 +182,11 @@ class Quiz extends React.Component {
   }
 
 
+  renderHTMLtext (item) {
+    const renderHTML = (rawHTML: string) => React.createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML } });
+    return renderHTML;
+  }
+
   render() {
     let {
       questions,
@@ -202,7 +208,8 @@ class Quiz extends React.Component {
         <SafeAreaView style={styles.safearea}>
           {question && (
             <View>
-              <Text style={styles.text}>{question.question}</Text>
+            <HTML baseFontStyle={{fontSize : 20,color:'#FFFFFF'}} html={question.question}  />
+              {/* <Text style={styles.text}>{question.question}</Text> */}
               <ButtonContainer>
                 {question.answers.map((answer, index) => (
                   <Button
@@ -215,6 +222,7 @@ class Quiz extends React.Component {
             </View>
           )}
           <Text style={styles.text}>{`${correctCount}/${totalCount}`}</Text>
+          
         </SafeAreaView>
         <Alert correct={answerCorrect} visible={answered} />
         <Modal

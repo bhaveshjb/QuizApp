@@ -8,7 +8,7 @@ import { CURRENT_QUIZ, CURRENT_TEST_ID } from '../utilities/constant';
 
 export default class QuizStart extends React.Component {
   constructor(props) {
-
+    console.log('------');
     super(props);
     this.state = {
       questions: [],
@@ -19,17 +19,18 @@ export default class QuizStart extends React.Component {
   }
 
   getQuizQuestions() {
+    
     getKey(CURRENT_TEST_ID).then(async currentTest => {
       if (currentTest) {
         const questions = await getKey(CURRENT_QUIZ);
-        this.setState({ questions });
+        this.setState({ questions,isLoading:false });
       } else {
         await fetch('https://opentdb.com/api.php?amount=10')
           .then(response => response.json())
           .then(responseJson => {
             const { results } = responseJson;
 
-
+            console.log('response',responseJson);
             let answersArray = [];
 
 

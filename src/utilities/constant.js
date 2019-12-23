@@ -1,0 +1,3 @@
+export const CURRENT_TEST_ID = 'CURRENT_TEST_ID';
+export const CURRENT_QUIZ = 'CURRENT_QUIZ';
+export const CURRENT_QUESTION = 'CURRENT_QUESTION';
